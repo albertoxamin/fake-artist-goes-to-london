@@ -1,7 +1,7 @@
 name: Docker buildx Images CI
 on:
   push:
-    branches: master
+    branches: main
 
 jobs:
   buildx:
