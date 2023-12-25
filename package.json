@@ -1,0 +1,26 @@
+{
+  "name": "fake-artist-goes-to-london",
+  "version": "1.0.0",
+  "description": "Pseudo online game for people to play in a group in person",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/albertoxamin/fake-artist-goes-to-london.git"
+  },
+  "author": "Alberto Xamin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/albertoxamin/fake-artist-goes-to-london/issues"
+  },
+  "homepage": "https://github.com/albertoxamin/fake-artist-goes-to-london#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.7.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
