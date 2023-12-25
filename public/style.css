@@ -1,0 +1,42 @@
+body {
+	font-family: Arial, sans-serif;
+	text-align: center;
+	padding: 20px;
+}
+
+#gameStatus,
+#playerRole {
+	margin-top: 20px;
+}
+
+html {
+	background-color: #E4017F;
+	color: #FFF000;
+	background-image: url("./London.svg");
+	/* background-repeat: no-repeat; */
+	background-position: bottom left;
+	background-size: 200% 2000%;
+}
+
+@media screen and (min-width: 600px) {
+	html {
+		background-position: -300pt 10132pt;
+		background-size: 200% 2000%;
+	}
+}
+
+#playerCount {
+	margin-top: 10px;
+}
+
+.card {
+	display: none;
+	background-color: white;
+	border: 1px solid #ddd;
+	padding: 20px;
+	margin-top: 20px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	text-align: center;
+	color: black;
+	border-radius: 12pt;
+}
