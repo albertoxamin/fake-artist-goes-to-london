@@ -9,12 +9,14 @@ class Room {
 
 	addPlayer(playerId) {
 		this.players.push(playerId);
+		console.log('Player', playerId, 'joined room', this.code);
 	}
 
 	startGame(topics) {
 		if (this.players.length < 3) {
 			throw new Error('Not enough players');
 		}
+		console.log('Starting game in room', this.code);
 
 		this.gameStarted = true;
 		const fakeArtistIndex = Math.floor(Math.random() * this.players.length);
@@ -99,7 +101,9 @@ const gameManager = {
 		return room.startGame(this.topics);
 	},
 
-	// Additional methods as needed...
+	removeRoom(code) {
+		delete this.rooms[code];
+	}
 };
 
 module.exports = { Room, gameManager };

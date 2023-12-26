@@ -57,9 +57,12 @@ io.on('connection', (socket) => {
 		if (roomCode) {
 			const room = gameManager.getRoom(roomCode);
 			if (room) {
-				room.removePlayer(socket.id); // You might need to implement this method
-				delete playerRoomMap[socket.id]; // Remove the player from the map
+				room.removePlayer(socket.id);
+				delete playerRoomMap[socket.id];
 				io.to(roomCode).emit('playerCount', room.players.length);
+				if (room.players.length === 0) {
+					gameManager.removeRoom(roomCode);
+				}
 			}
 		}
 	});
