@@ -39,6 +39,8 @@ html {
 	text-align: center;
 	color: black;
 	border-radius: 12pt;
+	font-size: 1.5em;
+	height: 100pt;
 }
 
 #controls {
@@ -47,19 +49,18 @@ html {
 	margin: 25pt;
 }
 
-
 input {
 	color: #FFF000;
-  background: #ffee0018;
-  border: 0;
-  outline: none;
-  font-size: 1.5em;
+	background: #ffee0018;
+	border: 0;
+	outline: none;
+	font-size: 1.5em;
 	padding: 5pt;
 }
 
 ::placeholder {
-  color: #ffee009e;
-  opacity: 1; /* Firefox */
+	color: #ffee009e;
+	opacity: 1;
 }
 
 button {

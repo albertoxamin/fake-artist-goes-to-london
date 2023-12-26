@@ -7,6 +7,8 @@ const startGameButton = document.getElementById('startGame');
 const gameStatusDiv = document.getElementById('gameStatus');
 const playerRoleDiv = document.getElementById('playerRole');
 
+startGameButton.style.display = 'none';
+
 createRoomButton.addEventListener('click', () => {
 	const roomCode = roomCodeInput.value;
 	socket.emit('createRoom', roomCode);
@@ -26,6 +28,7 @@ function hideRoomActions() {
 	createRoomButton.style.display = 'none';
 	joinRoomButton.style.display = 'none';
 	roomCodeInput.style.display = 'none';
+	startGameButton.style.display = 'block';
 }
 
 socket.on('roomCreated', (roomCode) => {
@@ -39,7 +42,7 @@ socket.on('joinedRoom', (roomCode) => {
 });
 
 socket.on('gameStarted', (data) => {
-	gameStatusDiv.innerText = `Game started. Topic: ${data.topic}`;
+	gameStatusDiv.innerText = `Game started.`;
 });
 
 const roleCardDiv = document.getElementById('roleCard');
