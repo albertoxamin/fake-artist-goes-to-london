@@ -13,9 +13,7 @@ html {
 	background-color: #E4017F;
 	color: #FFF000;
 	background-image: url("./London.svg");
-	/* background-repeat: no-repeat; */
-	background-position: bottom left;
-	background-position: -609pt 203pt;
+	background-position: -609pt 162pt;
 }
 
 @media screen and (min-width: 600px) {

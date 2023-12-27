@@ -6,12 +6,19 @@ const { gameManager } = require('./managers');
 const app = express();
 app.use(express.static('public'));
 const server = http.createServer(app);
-const io = socketIo(server);
+const io = socketIo(server, {
+	connectionStateRecovery: {}
+});
 
 let playerRoomMap = {};
 
 
 io.on('connection', (socket) => {
+	socket.emit(
+		'openRooms',
+		Object.keys(gameManager.rooms).filter(roomCode => !gameManager.rooms[roomCode].gameStarted)
+	)
+
 	socket.on('createRoom', (roomCode) => {
 		if (gameManager.getRoom(roomCode)) {
 			socket.emit('error', 'Room already exists');
@@ -23,6 +30,7 @@ io.on('connection', (socket) => {
 		room.addPlayer(socket.id);
 		playerRoomMap[socket.id] = roomCode; // Store player's room
 		io.to(roomCode).emit('playerCount', room.players.length);
+		socket.emit('isFirstPlayer', true);
 	});
 
 	socket.on('joinRoom', (roomCode) => {
@@ -33,6 +41,7 @@ io.on('connection', (socket) => {
 			socket.emit('joinedRoom', roomCode);
 			io.to(roomCode).emit('playerCount', room.players.length);
 			playerRoomMap[socket.id] = roomCode; // Store player's room
+			socket.emit('isFirstPlayer', room.players[0] === socket.id);
 		} else {
 			socket.emit('error', 'Room does not exist');
 		}

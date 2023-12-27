@@ -67,6 +67,15 @@ socket.on('playerCount', (count) => {
 });
 
 
+socket.on('isFirstPlayer', (isFirstPlayer) => {
+	if (isFirstPlayer) {
+		startGameButton.style.opacity = 1;
+	} else {
+		startGameButton.style.opacity = 0;
+	}
+});
+
+
 socket.on('error', (message) => {
 	alert(message);
 });
