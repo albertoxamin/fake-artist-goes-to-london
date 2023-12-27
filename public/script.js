@@ -34,6 +34,8 @@ function hideRoomActions() {
 socket.on('roomCreated', (roomCode) => {
 	gameStatusDiv.innerText = `Room created: ${roomCode}`;
 	hideRoomActions();
+	const newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?roomCode=' + roomCode;
+	window.history.pushState({ path: newurl }, '', newurl);
 });
 
 socket.on('joinedRoom', (roomCode) => {
@@ -79,3 +81,14 @@ socket.on('isFirstPlayer', (isFirstPlayer) => {
 socket.on('error', (message) => {
 	alert(message);
 });
+
+
+window.onload = () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const roomCode = urlParams.get('roomCode');
+    if (roomCode) {
+        roomCodeInput.value = roomCode;
+        socket.emit('joinRoom', roomCode);
+    }
+};
+
